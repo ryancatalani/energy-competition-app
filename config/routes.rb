@@ -1,6 +1,7 @@
 EnergyCompetitionApp::Application.routes.draw do
 
   resources :users
+  resources :entries, :only => [:index, :new, :create]
 
 
   # The priority is based upon order of creation:

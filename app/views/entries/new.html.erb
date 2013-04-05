@@ -1,0 +1,46 @@
+<% if @entry.nil? %>
+
+	<% if @user.nil? %>
+		<div class="alert alert-error">
+			Sorry, we couldn't identify you. Please go back to your email and click on the link inside.
+		</div>
+	<% end %>
+
+	<% if !@can_enter %>
+		<div class="alert alert-error">
+			Sorry, you must enter your data between 6 p.m. and midnight. You can enter your data tomorrow, though!
+		</div>
+	<% end %>
+
+<% else %>
+
+	<h2>New entry</h2>
+
+	<%= form_for @entry do |f| %>
+
+		<%= f.label :shower_time, "For how many minutes have you showered today?" %>
+		<%= f.number_field :shower_time %>
+
+		<%= f.label :personal_lightbulbs, "How many of your lightbulbs are turned on?" %>
+		<%= f.number_field :personal_lightbulbs %>
+
+		<%= f.label :shared_lightbulbs, "How many shared lightbulbs are turned on?" %>
+		<%= f.number_field :shared_lightbulbs %>
+
+		<%= f.label :plugged_in, "How many outlets are you (personally) currently using?" %>
+		<%= f.number_field :plugged_in %>
+
+		<%= f.label :recycled_items, "How many items did you recycle today?" %>
+		<%= f.number_field :recycled_items %>
+
+		<%= f.hidden_field :user_id, :value => @user.id %>
+
+		<div class="form-actions">
+			<%= f.submit "Submit", :class => "btn btn-primary" %>
+		</div>
+
+
+	<% end %>
+
+
+<% end %>

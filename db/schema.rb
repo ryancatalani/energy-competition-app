@@ -11,7 +11,20 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130405043357) do
+ActiveRecord::Schema.define(:version => 20130405045426) do
+
+  create_table "entries", :force => true do |t|
+    t.integer  "shower_time"
+    t.integer  "personal_lightbulbs"
+    t.integer  "shared_lightbulbs"
+    t.integer  "plugged_in"
+    t.integer  "recycled_items"
+    t.integer  "user_id"
+    t.integer  "room"
+    t.integer  "floor"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "name"
