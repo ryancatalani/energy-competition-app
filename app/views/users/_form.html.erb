@@ -1,0 +1,39 @@
+<%= form_for(@user) do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name, "First/given name" %>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :room %>
+    <span class="help-block">Don't include a suite letter (e.g. 101, not 101A).</span>
+    <%= f.number_field :room %>
+  </div>
+  <div class="field">
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :phone, "Cell phone number" %>
+    <span class="help-block">Optional, for daily text message notifications.</span>
+    <%= f.text_field :phone %>
+  </div>
+  <div class="field">
+    <%= f.label :floor %>
+    <%= f.select :floor, options_for_select(competition_floors_arr) %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Save", :class => "btn btn-primary" %>
+  </div>
+<% end %>

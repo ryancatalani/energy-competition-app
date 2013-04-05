@@ -1,0 +1,29 @@
+<h1>Users</h1>
+<%= link_to 'New User', new_user_path, :class => 'btn' %>
+
+<br><br>
+
+<table class="table">
+  <tr>
+    <th>Name</th>
+    <th>Room</th>
+    <th>Email</th>
+    <th>Phone</th>
+    <th>Floor</th>
+    <th></th>
+  </tr>
+
+<% @users.each do |user| %>
+  <tr>
+    <td><%= user.name %></td>
+    <td><%= user.room %></td>
+    <td><%= user.email %></td>
+    <td><%= user.phone %></td>
+    <td><%= competition_floor_from user.floor %></td>
+    <td><%= link_to 'Show', user, :class => 'btn' %>
+        <%= link_to 'Edit', edit_user_path(user), :class => 'btn' %>
+        <%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn' %>
+    </td>
+  </tr>
+<% end %>
+</table>
