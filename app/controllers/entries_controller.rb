@@ -1,7 +1,8 @@
 class EntriesController < ApplicationController
   def index
   	@entries = Entry.all
-
+    @shower_time = @entries.group_by {|e| e.created_at.day}.values.map{ |a| [a.first.created_at.midnight.to_i * 1000, (a.sum(&:shared_lightbulbs) / a.count)] }
+    @plugged_in = @entries.group_by {|e| e.created_at.day}.values.map{ |a| [a.first.created_at.midnight.to_i * 1000, (a.sum(&:plugged_in) / a.count)] }
   end
 
   def new
