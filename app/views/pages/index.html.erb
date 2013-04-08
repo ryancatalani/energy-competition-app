@@ -8,25 +8,116 @@
 		<h2>Piano Row, floor 3</h2>
 		<div class="usages">
 			<div class="usage">
-				<div class="usage_num">30W</div>
-				<div class="usage_label">average approximate wattage</div>
+				<div class="usage_num"><%= number_with_precision(@wattage[:prow_latest], :precision => 1, :delimiter => ',') %>W</div>
+				<div class="usage_label">average individual wattage</div>
 			</div>
 			<div class="usage">
-				<div class="usage_num">5</div>
+				<div class="usage_num"><%= @recycled_items[:prow_latest] %></div>
 				<div class="usage_label">average recycled items</div>
 			</div>
 		</div>
-
+		<div id="prow_w_chart">
+			<svg></svg>
+		</div>
+		<div id="prow_r_chart">
+			<svg></svg>
+		</div>
 	</div>
 	<div class="span6">
 		<h2>Little Building, floor 5</h2>
-		<div class="usage">
-			<div class="usage_num">30W</div>
-			<div class="usage_label">average approximate wattage</div>
+		<div class="usages">
+			<div class="usage">
+				<div class="usage_num"><%= number_with_precision(@wattage[:lb_latest], :precision => 1, :delimiter => ',') %>W</div>
+				<div class="usage_label">average individual wattage</div>
+			</div>
+			<div class="usage">
+				<div class="usage_num"><%= @recycled_items[:lb_latest] %></div>
+				<div class="usage_label">average recycled items</div>
+			</div>
 		</div>
-		<div class="usage">
-			<div class="usage_num">5</div>
-			<div class="usage_label">average recycled items</div>
+		<div id="lb_w_chart">
+			<svg></svg>
+		</div>
+		<div id="lb_r_chart">
+			<svg></svg>
 		</div>
 	</div>
 </div>
+
+
+
+<script src="/d3.v2.min.js"></script>
+<script src="/nv.d3.min.js"></script>
+<script src="/nvd3_src/tooltip.js"></script>
+<script src="/nvd3_src/utils.js"></script>
+<script src="/nvd3_src/models/legend.js"></script>
+<script src="/nvd3_src/models/axis.js"></script>
+<script src="/nvd3_src/models/scatter.js"></script>
+<script src="/nvd3_src/models/line.js"></script>
+<script src="/nvd3_src/models/lineChart.js"></script>
+<script></script>
+
+<script>
+var data = {}
+
+data.prow_r = [
+	{
+		"key": "Recycled items",
+		"values": <%= @recycled_items[:prow] %>,
+		"color": '#fff'
+	}
+]
+
+data.lb_r = [
+	{
+		"key": "Recycled items",
+		"values": <%= @recycled_items[:lb] %>,
+		"color": '#fff'
+	}
+]
+
+data.prow_w = [
+	{
+		"key": "Average individual wattage",
+		"values": <%= @wattage[:prow] %>,
+		"color": '#fff'
+	}
+]
+
+data.lb_w = [
+	{
+		"key": "Average individual wattage",
+		"values": <%= @wattage[:lb] %>,
+		"color": '#fff'
+	}
+]
+
+<% %w(prow_r prow_w lb_r lb_w).each do |key| %>
+
+nv.addGraph(function() {
+  var chart = nv.models.lineChart();
+
+  chart
+	.x(function(d) { return d[0] })
+	.y(function(d) { return d[1] });
+
+  chart.xAxis
+    .tickFormat(function(d) { return d3.time.format('%x')(new Date(d)) });
+
+  chart.yAxis
+      .tickFormat(d3.format(',.1f'));
+
+  d3.select('#<%= key + '_chart' %> svg')
+      .datum(data.<%= key %>)
+    .transition().duration(500)
+      .call(chart);
+
+  nv.utils.windowResize(chart.update);
+
+  return chart;
+});
+
+<% end %>
+
+
+</script>
