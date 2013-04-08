@@ -8,8 +8,8 @@
 		<h2>Piano Row, floor 3</h2>
 		<div class="usages">
 			<div class="usage">
-				<div class="usage_num"><%= number_with_precision(@wattage[:prow_latest], :precision => 1, :delimiter => ',') %>W</div>
-				<div class="usage_label">average individual wattage</div>
+				<div class="usage_num"><%= number_with_precision(@wattage[:prow_latest], :precision => 1, :delimiter => ',') %>kWh</div>
+				<div class="usage_label">average individual energy use</div>
 			</div>
 			<div class="usage">
 				<div class="usage_num"><%= @recycled_items[:prow_latest] %></div>
@@ -27,8 +27,8 @@
 		<h2>Little Building, floor 5</h2>
 		<div class="usages">
 			<div class="usage">
-				<div class="usage_num"><%= number_with_precision(@wattage[:lb_latest], :precision => 1, :delimiter => ',') %>W</div>
-				<div class="usage_label">average individual wattage</div>
+				<div class="usage_num"><%= number_with_precision(@wattage[:lb_latest], :precision => 1, :delimiter => ',') %>kWh</div>
+				<div class="usage_label">average individual energy use</div>
 			</div>
 			<div class="usage">
 				<div class="usage_num"><%= @recycled_items[:lb_latest] %></div>
