@@ -2,20 +2,20 @@ namespace :db do
 	desc "Add some fake data"
 	task :fake_data => :environment do
 
-		# rooms = [
-		# 	[101, 102, 103, 104, 104, 106, 107],
-		# 	[501, 502, 503, 504, 505, 506, 507]
-		# ]
+		rooms = [
+			[101, 102, 103, 104, 104, 106, 107],
+			[501, 502, 503, 504, 505, 506, 507]
+		]
 
-		# 50.times do |i|
-		# 	user = User.new
-		# 	user.name = Faker::Name.first_name
-		# 	user.email = Faker::Internet.email
-		# 	user.floor = i.even? ? 1 : 0
-		# 	user.phone = Faker::PhoneNumber.cell_phone
-		# 	user.room = rooms[user.floor][rand(7)]
-		# 	user.save
-		# end
+		50.times do |i|
+			user = User.new
+			user.name = Faker::Name.first_name
+			user.email = Faker::Internet.email
+			user.floor = i.even? ? 1 : 0
+			user.phone = Faker::PhoneNumber.cell_phone
+			user.room = rooms[user.floor][rand(7)]
+			user.save
+		end
 
 		maxes = [8, 5, 3]
 
