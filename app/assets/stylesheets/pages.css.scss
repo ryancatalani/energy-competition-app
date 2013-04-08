@@ -1,0 +1,37 @@
+// Place all the styles related to the Pages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+$purple: #6b4f87;
+
+body.index {
+	background: $purple;
+	color: #fff;
+
+	header {
+		border-bottom: 5px solid #fff;
+		margin-bottom: 2em;
+	}
+
+	.usages {
+		clear: both;
+	}
+
+	.usage {
+		background: #fff;
+		color: $purple;
+		width: 47%;
+		float: left;
+		padding: 1%;
+		text-align: center;
+		&:last-child {
+			margin-left: 1%;
+		}
+	}
+
+	.usage_num {
+		font-size: 6em;
+		line-height: 1em;
+		font-weight: bold;
+	}
+}

@@ -1,5 +1,7 @@
 EnergyCompetitionApp::Application.routes.draw do
 
+  root :to => 'pages#index'
+
   resources :users
   resources :entries, :only => [:index, :new, :create]
 

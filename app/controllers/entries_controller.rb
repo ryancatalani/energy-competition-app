@@ -7,8 +7,12 @@ class EntriesController < ApplicationController
 
   def new
   	@user = User.find(params[:id]) rescue nil
-  	hour = Time.now.in_time_zone("Eastern Time (US & Canada)").hour
+    current_time = Time.now.in_time_zone("Eastern Time (US & Canada)")
+  	hour = current_time.hour
   	@can_enter = (hour >= 18 && hour <= 24) || (!params[:test].nil? && params[:test] = true)
+    if @user
+      @can_enter = false if @user.entries.last.created_at.day == current_time.day
+    end
   	if @user && @can_enter
   		@entry = Entry.new
   	end
