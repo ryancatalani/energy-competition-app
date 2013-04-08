@@ -2,8 +2,8 @@ class PagesController < ApplicationController
   def index
   	@body_class = "index"
 
-  	prow = Entry.where(:floor => 0).group_by {|e| e.created_at.day}.values
-  	lb = Entry.where(:floor => 1).group_by {|e| e.created_at.day}.values
+  	prow = Entry.where(:floor => 0).group_by {|e| e.created_at.day}.values.sort
+  	lb = Entry.where(:floor => 1).group_by {|e| e.created_at.day}.values.sort
 
   	avg_lightbulb_wattage = 30
   	avg_device_wattage = 80
