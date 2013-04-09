@@ -18,20 +18,65 @@
 
 	<%= form_for @entry do |f| %>
 
+	<div class="question">
 		<%= f.label :shower_time, "For how many minutes have you showered today?" %>
-		<%= f.number_field :shower_time %>
+		<%= f.hidden_field :shower_time, :value => 0, :class => 'field' %>
+		<div class="btn-group" data-toggle="buttons-radio">
+		  <button class="btn form-btn" type="button" value="2.5">0-5</button>
+		  <button class="btn form-btn" type="button" value="7.5">5-10</button>
+		  <button class="btn form-btn" type="button" value="12.5">10-15</button>
+		  <button class="btn form-btn" type="button" value="17.5">15-20</button>
+		  <button class="btn form-btn" type="button" value="25">20+</button>
+		</div>
+	</div>
 
+	<div class="question">
 		<%= f.label :personal_lightbulbs, "How many of your lightbulbs are turned on?" %>
-		<%= f.number_field :personal_lightbulbs %>
+		<%= f.hidden_field :personal_lightbulbs, :value => 0, :class => 'field' %>
+		<div class="btn-group" data-toggle="buttons-radio">
+		  <button class="btn form-btn" type="button" value="1">1</button>
+		  <button class="btn form-btn" type="button" value="2">2</button>
+		  <button class="btn form-btn" type="button" value="3">3</button>
+		  <button class="btn form-btn" type="button" value="4">4</button>
+		  <button class="btn form-btn" type="button" value="5">5</button>
+		  <button class="btn form-btn" type="button" value="7">5+</button>
+		</div>
+	</div>
 
+	<div class="question">
 		<%= f.label :shared_lightbulbs, "How many shared lightbulbs are turned on?" %>
-		<%= f.number_field :shared_lightbulbs %>
+		<%= f.hidden_field :shared_lightbulbs, :value => 0, :class => 'field' %>
+		<div class="btn-group" data-toggle="buttons-radio">
+		  <button class="btn form-btn" type="button" value="1">1</button>
+		  <button class="btn form-btn" type="button" value="2">2</button>
+		  <button class="btn form-btn" type="button" value="3">3</button>
+		  <button class="btn form-btn" type="button" value="4">4</button>
+		  <button class="btn form-btn" type="button" value="5">5</button>
+		  <button class="btn form-btn" type="button" value="7">5+</button>
+		</div>
+	</div>
 
+	<div class="question">
 		<%= f.label :plugged_in, "How many outlets are you (personally) currently using?" %>
-		<%= f.number_field :plugged_in %>
+		<%= f.hidden_field :plugged_in, :value => 0, :class => 'field' %>
+		<div class="btn-group" data-toggle="buttons-radio">
+		  <button class="btn form-btn" type="button" value="1.5">1-2</button>
+		  <button class="btn form-btn" type="button" value="3.5">3-4</button>
+		  <button class="btn form-btn" type="button" value="5.5">5-6</button>
+		  <button class="btn form-btn" type="button" value="8">7+</button>
+		</div>
+	</div>
 
+	<div class="question">
 		<%= f.label :recycled_items, "How many items did you recycle today?" %>
-		<%= f.number_field :recycled_items %>
+		<%= f.hidden_field :recycled_items, :value => 0, :class => 'field' %>
+		<div class="btn-group" data-toggle="buttons-radio">
+		  <button class="btn form-btn" type="button" value="1.5">1-2</button>
+		  <button class="btn form-btn" type="button" value="3.5">3-4</button>
+		  <button class="btn form-btn" type="button" value="5.5">5-6</button>
+		  <button class="btn form-btn" type="button" value="8">7+</button>
+		</div>
+	</div>
 
 		<%= f.hidden_field :user_id, :value => @user.id %>
 
