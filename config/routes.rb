@@ -5,6 +5,8 @@ EnergyCompetitionApp::Application.routes.draw do
   resources :users
   resources :entries, :only => [:index, :new, :create]
 
+  match 'register' => 'users#new'
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
