@@ -20,6 +20,7 @@ end
 
 gem 'jquery-rails'
 gem 'faker'
+gem 'twilio-ruby'
 
 group :development, :test do
 	gem 'sqlite3'
