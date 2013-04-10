@@ -1,4 +1,7 @@
 class EntriesController < ApplicationController
+
+  http_basic_authenticate_with name: ENV['APP_USER'], password: ENV['APP_PASS'], :except => [:new, :create]
+
   def index
   	@entries = Entry.all
     @shower_time = @entries.group_by {|e| e.created_at.day}.values.map{ |a| [a.first.created_at.midnight.to_i * 1000, (a.sum(&:shared_lightbulbs) / a.count)] }
@@ -28,7 +31,7 @@ class EntriesController < ApplicationController
   	@entry.floor = user.floor
 
   	if @entry.save
-  		redirect_to entries_path
+  		redirect_to root_path
   	else
   		render 'new'
   	end

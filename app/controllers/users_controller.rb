@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+
+  http_basic_authenticate_with name: ENV['APP_USER'], password: ENV['APP_PASS'], :except => [:new, :create]
+
   # GET /users
   # GET /users.json
   def index
