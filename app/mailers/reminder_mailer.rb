@@ -1,5 +1,5 @@
 class ReminderMailer < ActionMailer::Base
-  default from: "Energy Competition <catalani.ryan@gmail.com>"
+  default from: "Energy Competition <ryan@ryancatalani.com>"
 
   def daily_reminder_email(user)
   	@name = user.name
