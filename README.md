@@ -1,6 +1,6 @@
 # About
 
-A simple Rails app for dormitory energy competitions, designed to run on Heroku. This is what it looks like: http://ecunplugged.herokuapp.com/. Participants can sign up and get email and/or text message notifications (via Twilio). To customize this, you'll want to change the title and participating floors in `application_controller.rb`, the email details in `reminder_mailer.rb`, and the phone number for reminders in `daily_reminders.rake`.
+A simple Rails app for dormitory energy competitions where participants report their energy usage, designed to run on Heroku. This is what it looks like: http://ecunplugged.herokuapp.com/. Participants can sign up and get daily email and/or text message notifications (via Twilio), and are limited to one entry per day. To customize this, you'll want to change the title and participating floors in `application_controller.rb`, the email details in `reminder_mailer.rb`, and the phone number for reminders in `daily_reminders.rake`.
 
 # License
 
